@@ -19,18 +19,17 @@ export class PropertiesTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  showHide(i, isKeyClicked) {
 
-    if (isKeyClicked == true) {
-      this.inputKeyVisibility[i] = !this.inputKeyVisibility[i];
-      this.propertiesKeyVisibility[i] = !this.propertiesKeyVisibility[i];
-      this.saveButtonDisabling[i] = false;
+  showHideKey(i){
+    this.inputKeyVisibility[i] = !this.inputKeyVisibility[i];
+    this.propertiesKeyVisibility[i] = !this.propertiesKeyVisibility[i];
+    this.saveButtonDisabling[i] = false;
+  }
 
-    } else {
-      this.inputValueVisibility[i] = !this.inputValueVisibility[i];
-      this.propertiesValueVisibility[i] = !this.propertiesValueVisibility[i];
-      this.saveButtonDisabling[i] = false;
-    }
+  showHideValue(i){
+    this.inputValueVisibility[i] = !this.inputValueVisibility[i];
+    this.propertiesValueVisibility[i] = !this.propertiesValueVisibility[i];
+    this.saveButtonDisabling[i] = false;
   }
 
   endEdition(i){

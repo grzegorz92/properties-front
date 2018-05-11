@@ -11,11 +11,11 @@
     </tr>
     <tr *ngFor="let property of propertiesModel; let i = index">
       <td>
-        <p [hidden]="propertiesKeyVisibility[i]" (click)="showHide(i, true)">{{property.key}}</p>
+        <p [hidden]="propertiesKeyVisibility[i]" (click)="showHideKey(i)">{{property.key}}</p>
         <input id="key-input" [hidden]="inputKeyVisibility[i]" type="text" placeholder="New key..." [(ngModel)]="property.key">
       </td>
       <td>
-        <p [hidden]="propertiesValueVisibility[i]" (click)="showHide(i,false)">{{property.value}}</p>
+        <p [hidden]="propertiesValueVisibility[i]" (click)="showHideValue(i)">{{property.value}}</p>
         <input [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..." [(ngModel)]="property.value">
       </td>
       <td>
