@@ -1,40 +1,17 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <h3 style="color: snow">Properties Editor</h3>
-    </div>
-  </div>
-</nav>
-
+<app-header></app-header>
 <div style="margin-left: 2%; margin-right: 2%">
 
-  <app-server></app-server> <!-- 1  -->
-  <!-- <div app-server></div> --> <!-- 2 -->
-  <!--<div class="app-server"></div>--> <!-- 3 -->
+  <!--
+  <app-server></app-server>       // 1
+  <div app-server></div>          // 2
+  <div class="app-server"></div>  // 3
+  -->
 
   <hr>
 </div>
 
 
-<div style="margin-left: 10%; margin-right: 10%; ">
-  <table class="table table-bordered">
-
-    <tr class="bg-primary">
-      <th class="aligner_c" style="width: 25%">Key</th>
-      <th class="aligner_c" style="width: 25%">Value</th>
-      <th class="aligner_c" style="width: 50%">Edit</th>
-    </tr>
-    <tr *ngFor="let property of propertiesModel" class="aligner_c">
-      <td>{{property.key}}</td>
-      <td>{{property.value}}</td>
-      <td>
-        <input type="text" placeholder="New key..." size="8px" style="margin-right: 5px" [(ngModel)]="property.key">
-        <input type="text" placeholder="New value..." size="10px" style="margin-right: 5px" [(ngModel)]="property.value">
-        <button class="btn btn-default">Save</button>
-      </td>
-    </tr>
-  </table>
-</div>
+<app-properties-table></app-properties-table>
 
 
 <!-- finished on: S2/L30 - next -> 2/31-->

@@ -1,0 +1,35 @@
+<div style="margin-left: 15%; margin-right: 15%; ">
+  <table class="table table-bordered">
+
+    <tr>
+      <th>[LOAD] [SAVE] [LOG]</th>
+    </tr>
+    <tr class="bg-primary">
+      <th style="width: 40%">Key</th>
+      <th style="width: 40%">Value</th>
+      <th style="width: 20%">Edit</th>
+    </tr>
+    <tr *ngFor="let property of propertiesModel; let i = index">
+      <td>
+        <p [hidden]="propertiesKeyVisibility[i]" (click)="showHide(i, true)">{{property.key}}</p>
+        <input id="key-input" [hidden]="inputKeyVisibility[i]" type="text" placeholder="New key..." [(ngModel)]="property.key">
+      </td>
+      <td>
+        <p [hidden]="propertiesValueVisibility[i]" (click)="showHide(i,false)">{{property.value}}</p>
+        <input [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..." [(ngModel)]="property.value">
+      </td>
+      <td>
+
+        <button class="btn btn-default" [disabled]="saveButtonDisabling[i]" (click)="endEdition(i)">Save</button>
+        <button class="btn btn-default">&#10006;</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ul>
+  <li *ngFor="let item of propertiesModel; let i = index">
+    {{i}} {{item.key}} {{item.value}}
+  </li>
+</ul>
+
