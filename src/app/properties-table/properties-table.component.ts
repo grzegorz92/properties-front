@@ -33,6 +33,15 @@ export class PropertiesTableComponent implements OnInit {
   }
 
   endEdition(i){
+
+    if(this.propertiesModel[i].key === "" && this.propertiesModel[i].value != ""){
+      alert("'Key' cannot be empty");
+    }else if(this.propertiesModel[i].value === "" &&this.propertiesModel[i].key != ""){
+      alert("'Value' cannot be empty");
+    }else if(this.propertiesModel[i].key === "" && this.propertiesModel[i].value === ""){
+      alert("'Key' and 'Value' cannot be empty");
+    }
+    else{
     this.inputKeyVisibility[i]=true;
     this.inputValueVisibility[i]=true;
 
@@ -40,6 +49,7 @@ export class PropertiesTableComponent implements OnInit {
     this.propertiesValueVisibility[i]=false;
 
     this.saveButtonDisabling[i]=true;
+    }
   }
 
 

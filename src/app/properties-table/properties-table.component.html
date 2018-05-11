@@ -16,7 +16,7 @@
       </td>
       <td>
         <p [hidden]="propertiesValueVisibility[i]" (click)="showHideValue(i)">{{property.value}}</p>
-        <input [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..." [(ngModel)]="property.value">
+        <input id="value-input" [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..." [(ngModel)]="property.value">
       </td>
       <td>
 
