@@ -1,3 +1,8 @@
 .aligner_c{
   text-align: center;
 }
+
+[hidden] {
+  display: none;
+}
+
