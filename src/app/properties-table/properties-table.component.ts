@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AppComponent} from "../app.component";
+import {Component, OnInit} from '@angular/core';
 import {PropertiesListService} from "../properties-list.service";
 
 @Component({
@@ -8,6 +7,8 @@ import {PropertiesListService} from "../properties-list.service";
   styleUrls: ['./properties-table.component.css'],
   providers: [PropertiesListService] //DI of class to constructor
 })
+
+
 export class PropertiesTableComponent implements OnInit {
 
  //@Input() propertiesModel:[{key: string, value: string}];
@@ -37,8 +38,7 @@ export class PropertiesTableComponent implements OnInit {
       this.saveButtonDisabling.push(true);
       this.saveButtonIcon.push("glyphicon glyphicon-floppy-saved");
     }
-    console.log(this.propertiesListService.getPropertiesModel());
-    console.log(this.inputKeyVisibility);
+
   }
 
 
@@ -77,17 +77,19 @@ export class PropertiesTableComponent implements OnInit {
     }
   }
 
-  deleteProperty(i) {
-    this.propertiesListService.getPropertiesModel().splice(i, 1);
-  }
-
   showHideAddNew(){
     this.newPropertyVisibility=!this.newPropertyVisibility;
   }
 
+
+  //TEMP Methods - delete after connection with REST
   addProperty(key: HTMLInputElement, value: HTMLInputElement){
    // this.propertiesModel.push({key: key.value, value: value.value});
     this.newPropertyVisibility=!this.newPropertyVisibility;
+  }
+
+  deleteProperty(i) {
+    this.propertiesListService.getPropertiesModel().splice(i, 1);
   }
 
 
