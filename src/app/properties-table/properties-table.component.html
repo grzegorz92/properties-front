@@ -1,4 +1,4 @@
-<div style="margin-left: 15%; margin-right: 15%; ">
+<div style="margin-left: 15%; margin-right: 15%; margin-top: 20% ">
   <table class="table table-bordered">
 
     <tr>
@@ -17,10 +17,12 @@
       </td>
       <td>
         <p [hidden]="propertiesValueVisibility[i]" (click)="showHideValue(i)">{{property.value}}</p>
-        <input id="value-input" [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..." [(ngModel)]="property.value">
+        <input id="value-input" [hidden]="inputValueVisibility[i]" type="text" placeholder="New value..."
+               [(ngModel)]="property.value">
       </td>
       <td style="text-align: center">
-        <button class="btn btn-default" [disabled]="saveButtonDisabling[i]" (click)="endEdition(i)" title="Save property">
+        <button class="btn btn-default" [disabled]="saveButtonDisabling[i]" (click)="endEdition(i)"
+                title="Save property">
           <span [class]="saveButtonIcon[i]"></span>
         </button>
         <button class="btn btn-danger" (click)="deleteProperty(i)" title="Delete property">&#10006;</button>
@@ -30,7 +32,8 @@
       <td><input type="text" placeholder="New key..." [hidden]="newPropertyVisibility" #key></td>
       <td><input type="text" placeholder="New value..." [hidden]="newPropertyVisibility" #value></td>
       <td style="text-align: center">
-        <button class="btn btn-default" title="Save new property" (click)="addProperty(key,value)" [hidden]="newPropertyVisibility">
+        <button class="btn btn-default" title="Save new property" (click)="addProperty(key,value)"
+                [hidden]="newPropertyVisibility">
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
       </td>
@@ -41,7 +44,8 @@
       <td></td>
       <td></td>
       <td style="text-align: center">
-        <button class="btn btn-primary" title="Add new property" (click)="showHideAddNew()" [disabled]="!newPropertyVisibility">
+        <button class="btn btn-primary" title="Add new property" (click)="showHideAddNew()"
+                [disabled]="!newPropertyVisibility">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
       </td>
@@ -57,5 +61,6 @@
     {{i}} {{item.key}} {{item.value}}
   </li>
 </ul>
+
 
 

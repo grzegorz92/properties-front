@@ -1,32 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-properties-table',
   templateUrl: './properties-table.component.html',
-  styleUrls: ['./properties-table.component.css']
+  styleUrls: ['./properties-table.component.css'],
+
 })
 export class PropertiesTableComponent implements OnInit {
 
-  propertiesModel = [{
-    key: "John",
-    value: "Smith"
-  }, {
-    key: "Greg",
-    value: "Koch"
-  },
-    {
-      key: "Richard",
-      value: "Pumpkin"
-    },
-    {
-      key: "Timothy",
-      value: "Lawrence"
-    },
-    {
-      key: "Johann",
-      value: "Wuerzburger"
-    },
-  ];
+ @Input() propertiesModel:[{key: string, value: string}];
+
 
 
   inputKeyVisibility: Array<boolean> = new Array();
@@ -97,19 +81,12 @@ export class PropertiesTableComponent implements OnInit {
     this.newPropertyVisibility=!this.newPropertyVisibility;
   }
 
-  addProperty(key,value){
-    //this.propertiesModel.push({key: key.value(), value: value.value()});
+  addProperty(key: HTMLInputElement, value: HTMLInputElement){
+   // this.propertiesModel.push({key: key.value, value: value.value});
     this.newPropertyVisibility=!this.newPropertyVisibility;
   }
 
-  getColor(){
 
-    return "red";
-  }
-
-  getColorB(){
-    return "{backgroundColor: green;}"
-  }
 
 
 }
