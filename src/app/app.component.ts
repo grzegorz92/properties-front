@@ -7,27 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  properties = [{
-    key: "John",
-    value: "Smith"
-  },
-    {
-      key: "Greg",
-      value: "Koch"
-    },
-    {
-      key: "Richard",
-      value: "Pumpkin"
-    },
-    {
-      key: "Timothy",
-      value: "Lawrence"
-    },
-    {
-      key: "Johann",
-      value: "Wuerzburger"
-    },
-  ];
-
 
 }

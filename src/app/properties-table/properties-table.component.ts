@@ -1,15 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-
+import {AppComponent} from "../app.component";
+import {PropertiesListService} from "../properties-list.service";
 
 @Component({
   selector: 'app-properties-table',
   templateUrl: './properties-table.component.html',
   styleUrls: ['./properties-table.component.css'],
-
+  providers: [PropertiesListService] //DI of class to constructor
 })
 export class PropertiesTableComponent implements OnInit {
 
- @Input() propertiesModel:[{key: string, value: string}];
+ //@Input() propertiesModel:[{key: string, value: string}];
 
 
 
@@ -22,12 +23,13 @@ export class PropertiesTableComponent implements OnInit {
 
   newPropertyVisibility = true;
 
-  constructor() {
+
+  constructor(private propertiesListService: PropertiesListService) {
   }
 
   ngOnInit() {
 
-    for (let i in this.propertiesModel) {
+    for (let i in this.propertiesListService.getPropertiesModel()) {
       this.inputKeyVisibility.push(true);
       this.inputValueVisibility.push(true);
       this.propertiesKeyVisibility.push(false);
@@ -35,6 +37,8 @@ export class PropertiesTableComponent implements OnInit {
       this.saveButtonDisabling.push(true);
       this.saveButtonIcon.push("glyphicon glyphicon-floppy-saved");
     }
+    console.log(this.propertiesListService.getPropertiesModel());
+    console.log(this.inputKeyVisibility);
   }
 
 
@@ -54,11 +58,11 @@ export class PropertiesTableComponent implements OnInit {
 
   endEdition(i) {
 
-    if (this.propertiesModel[i].key === "" && this.propertiesModel[i].value != "") {
+    if (this.propertiesListService.getPropertiesModel()[i].key === "" && this.propertiesListService.getPropertiesModel()[i].value != "") {
       alert("'Key' cannot be empty");
-    } else if (this.propertiesModel[i].value === "" && this.propertiesModel[i].key != "") {
+    } else if (this.propertiesListService.getPropertiesModel()[i].value === "" && this.propertiesListService.getPropertiesModel()[i].key != "") {
       alert("'Value' cannot be empty");
-    } else if (this.propertiesModel[i].key === "" && this.propertiesModel[i].value === "") {
+    } else if (this.propertiesListService.getPropertiesModel()[i].key === "" && this.propertiesListService.getPropertiesModel()[i].value === "") {
       alert("'Key' and 'Value' cannot be empty");
     }
     else {
@@ -74,7 +78,7 @@ export class PropertiesTableComponent implements OnInit {
   }
 
   deleteProperty(i) {
-    this.propertiesModel.splice(i, 1);
+    this.propertiesListService.getPropertiesModel().splice(i, 1);
   }
 
   showHideAddNew(){

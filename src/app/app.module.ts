@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {ClickOutsideModule} from "ng-click-outside";
 
+
 @NgModule({
   declarations: [
     AppComponent,

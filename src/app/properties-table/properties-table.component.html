@@ -9,7 +9,7 @@
       <th style="width: 40%">Value</th>
       <th style="width: 20%" class="aligner_c">Edit</th>
     </tr>
-    <tr *ngFor="let property of propertiesModel; let i = index">
+    <tr *ngFor="let property of propertiesListService.getPropertiesModel(); let i = index">
       <td>
         <p [hidden]="propertiesKeyVisibility[i]" (click)="showHideKey(i)">{{property.key}}</p>
         <input id="key-input" [hidden]="inputKeyVisibility[i]" type="text" placeholder="New key..."
@@ -57,7 +57,7 @@
 
 <hr>
 <ul>
-  <li *ngFor="let item of propertiesModel; let i = index">
+  <li *ngFor="let item of propertiesListService.getPropertiesModel(); let i = index">
     {{i}} {{item.key}} {{item.value}}
   </li>
 </ul>
