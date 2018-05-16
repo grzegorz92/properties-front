@@ -91,8 +91,4 @@ export class PropertiesTableComponent implements OnInit {
   deleteProperty(i) {
     this.propertiesListService.getPropertiesModel().splice(i, 1);
   }
-
-
-
-
 }
