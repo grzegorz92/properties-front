@@ -9,6 +9,8 @@ import { PropertiesTableComponent } from './properties-table/properties-table.co
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {ClickOutsideModule} from "ng-click-outside";
+import {RequestService} from "./requests.service";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import {ClickOutsideModule} from "ng-click-outside";
   imports: [
     BrowserModule,
     FormsModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,12 @@
+import {Injectable} from "@angular/core";
+
+@Injectable()
 export class PropertiesListService {
+
+
+  constructor() {
+
+  }
 
   private propertiesModel = [{
     key: "John",
@@ -26,6 +34,12 @@ export class PropertiesListService {
   public getPropertiesModel(){
     return this.propertiesModel;
   }
+
+
+public setPropertiesModel(properties){
+    this.propertiesModel=properties;
+}
+
 
 
 }

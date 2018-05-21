@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {PropertiesListService} from "../properties-list.service";
+import {RequestService} from "../requests.service";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'app-properties-table',
@@ -9,10 +11,9 @@ import {PropertiesListService} from "../properties-list.service";
 })
 
 
-export class PropertiesTableComponent implements OnInit {
+export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
 
- //@Input() propertiesModel:[{key: string, value: string}];
-
+  //@Input() propertiesModel:[{key: string, value: string}];
 
 
   inputKeyVisibility: Array<boolean> = new Array();
@@ -24,8 +25,11 @@ export class PropertiesTableComponent implements OnInit {
 
   newPropertyVisibility = true;
 
+  properties = [];
 
-  constructor(private propertiesListService: PropertiesListService) {
+
+  constructor(private propertiesListService: PropertiesListService, private requestService: RequestService) {
+
   }
 
   ngOnInit() {
@@ -38,6 +42,16 @@ export class PropertiesTableComponent implements OnInit {
       this.saveButtonDisabling.push(true);
       this.saveButtonIcon.push("glyphicon glyphicon-floppy-saved");
     }
+    this.onGetProperties();
+
+  }
+
+  ngDoCheck(): void {
+  //WARNING!!
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
 
   }
 
@@ -77,18 +91,33 @@ export class PropertiesTableComponent implements OnInit {
     }
   }
 
-  showHideAddNew(){
-    this.newPropertyVisibility=!this.newPropertyVisibility;
+  showHideAddNew() {
+    this.newPropertyVisibility = !this.newPropertyVisibility;
   }
 
 
   //TEMP Methods - delete after connection with REST
-  addProperty(key: HTMLInputElement, value: HTMLInputElement){
-   // this.propertiesModel.push({key: key.value, value: value.value});
-    this.newPropertyVisibility=!this.newPropertyVisibility;
+  addProperty(key: HTMLInputElement, value: HTMLInputElement) {
+    // this.propertiesModel.push({key: key.value, value: value.value});
+    this.newPropertyVisibility = !this.newPropertyVisibility;
   }
 
   deleteProperty(i) {
     this.propertiesListService.getPropertiesModel().splice(i, 1);
+    this.endEdition(i);
+  }
+
+  onGetProperties() {
+
+    this.requestService.getProperties().subscribe(
+        (data: any[])=>{
+
+          console.log(data);
+          console.log(this.propertiesListService.getPropertiesModel());
+
+        }
+    );
+
+
   }
 }
