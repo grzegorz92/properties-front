@@ -25,7 +25,11 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
 
   newPropertyVisibility = true;
 
-  properties = [];
+  propertiesModel = [];
+  propertiesModelOldValues = [];
+
+  key: string = "";
+  value: string = "";
 
 
   constructor(private propertiesListService: PropertiesListService, private requestService: RequestService) {
@@ -34,7 +38,13 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnInit() {
 
-    for (let i in this.propertiesListService.getPropertiesModel()) {
+    this.onGetProperties();
+
+  }
+
+  ngDoCheck(): void {
+
+    for (let i in this.propertiesModel) {
       this.inputKeyVisibility.push(true);
       this.inputValueVisibility.push(true);
       this.propertiesKeyVisibility.push(false);
@@ -42,17 +52,11 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
       this.saveButtonDisabling.push(true);
       this.saveButtonIcon.push("glyphicon glyphicon-floppy-saved");
     }
-    this.onGetProperties();
 
-  }
-
-  ngDoCheck(): void {
-  //WARNING!!
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
   }
 
 
@@ -64,6 +68,12 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   }
 
   showHideValue(i) {
+
+    // console.log("SHV bf: " + this.propertiesModelOldValues);
+    // this.propertiesModelOldValues = this.propertiesModel;//copy previous data to different array
+    // console.log("SHV af: " + this.propertiesModelOldValues);
+
+
     this.inputValueVisibility[i] = !this.inputValueVisibility[i];
     this.propertiesValueVisibility[i] = !this.propertiesValueVisibility[i];
     this.saveButtonDisabling[i] = false;
@@ -72,11 +82,11 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
 
   endEdition(i) {
 
-    if (this.propertiesListService.getPropertiesModel()[i].key === "" && this.propertiesListService.getPropertiesModel()[i].value != "") {
+    if (this.propertiesModel[i].key === "" && this.propertiesModel[i].value != "") {
       alert("'Key' cannot be empty");
-    } else if (this.propertiesListService.getPropertiesModel()[i].value === "" && this.propertiesListService.getPropertiesModel()[i].key != "") {
+    } else if (this.propertiesModel[i].value === "" && this.propertiesModel[i].key != "") {
       alert("'Value' cannot be empty");
-    } else if (this.propertiesListService.getPropertiesModel()[i].key === "" && this.propertiesListService.getPropertiesModel()[i].value === "") {
+    } else if (this.propertiesModel[i].key === "" && this.propertiesModel[i].value === "") {
       alert("'Key' and 'Value' cannot be empty");
     }
     else {
@@ -96,12 +106,6 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   }
 
 
-  //TEMP Methods - delete after connection with REST
-  addProperty(key: HTMLInputElement, value: HTMLInputElement) {
-    // this.propertiesModel.push({key: key.value, value: value.value});
-    this.newPropertyVisibility = !this.newPropertyVisibility;
-  }
-
   deleteProperty(i) {
     this.propertiesListService.getPropertiesModel().splice(i, 1);
     this.endEdition(i);
@@ -110,14 +114,55 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   onGetProperties() {
 
     this.requestService.getProperties().subscribe(
-        (data: any[])=>{
+      (data: any[]) => {
+        this.propertiesModel = data;
 
-          console.log(data);
-          console.log(this.propertiesListService.getPropertiesModel());
-
-        }
+        console.log(data);
+      }
     );
+  }
 
+  onAddProperties() {
 
+    if (this.key === "" && this.value != "") {
+      alert("'Key' cannot be empty");
+    } else if (this.value === "" && this.key != "") {
+      alert("'Value' cannot be empty");
+    } else if (this.key === "" && this.value === "") {
+      alert("'Key' and 'Value' cannot be empty");
+    }
+    else {
+
+      this.requestService.addProperties(this.key, this.value).subscribe(
+        (response) => console.log(response)
+      );
+      this.newPropertyVisibility = !this.newPropertyVisibility;
+    }
+    this.onGetProperties();
+
+    this.key = "";
+    this.value = "";
+  }
+
+  onEditProperties(i) {
+
+    console.log("IN Edition ");
+    //console.log("key: " + this.propertiesModel[i].key + ", oV: " + this.propertiesModelOldValues[i].value + ", nV: " + this.propertiesModel[i].value);
+
+    this.requestService.editProperties(this.propertiesModel[i].key, "Ryszard", this.propertiesModel[i].value)
+      .subscribe(
+        (response) => console.log(response)
+      );
+    this.onGetProperties();
+    this.endEdition(i);
+  }
+
+  onDeleteProperties(i) {
+
+    this.requestService.deleteProperties(this.propertiesModel[i].key, this.propertiesModel[i].value)
+      .subscribe(
+        (response) => console.log(response)
+      );
+    this.onGetProperties();
   }
 }

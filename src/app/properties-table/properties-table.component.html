@@ -1,15 +1,13 @@
 <div style="margin-left: 15%; margin-right: 15%; margin-top: 20% ">
   <table class="table table-bordered">
 
-    <tr>
-      <th>[LOAD] [SAVE] [LOG]</th>
-    </tr>
+
     <tr class="bg-primary">
       <th style="width: 40%">Key</th>
       <th style="width: 40%">Value</th>
       <th style="width: 20%" class="aligner_c">Edit</th>
     </tr>
-    <tr *ngFor="let property of propertiesListService.getPropertiesModel(); let i = index">
+    <tr *ngFor="let property of propertiesModel; let i = index">
       <td>
         <p [hidden]="propertiesKeyVisibility[i]" (click)="showHideKey(i)">{{property.key}}</p>
         <input id="key-input" [hidden]="inputKeyVisibility[i]" type="text" placeholder="New key..."
@@ -21,18 +19,18 @@
                [(ngModel)]="property.value">
       </td>
       <td style="text-align: center">
-        <button class="btn btn-default" [disabled]="saveButtonDisabling[i]" (click)="endEdition(i)"
+        <button class="btn btn-default" [disabled]="saveButtonDisabling[i]" (click)="onEditProperties(i)"
                 title="Save property">
           <span [class]="saveButtonIcon[i]"></span>
         </button>
-        <button class="btn btn-danger" (click)="deleteProperty(i)" title="Delete property">&#10006;</button>
+        <button class="btn btn-danger" (click)="onDeleteProperties(i)" title="Delete property">&#10006;</button>
       </td>
     </tr>
     <tr [hidden]="newPropertyVisibility">
-      <td><input type="text" placeholder="New key..." [hidden]="newPropertyVisibility" #key></td>
-      <td><input type="text" placeholder="New value..." [hidden]="newPropertyVisibility" #value></td>
+      <td><input type="text" placeholder="New key..." [hidden]="newPropertyVisibility" [(ngModel)]="key" ></td>
+      <td><input type="text" placeholder="New value..." [hidden]="newPropertyVisibility" [(ngModel)]="value"></td>
       <td style="text-align: center">
-        <button class="btn btn-default" title="Save new property" (click)="addProperty(key,value)"
+        <button class="btn btn-default" title="Save new property" (click)="onAddProperties()"
                 [hidden]="newPropertyVisibility">
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
@@ -55,12 +53,3 @@
 
 </div>
 
-<hr>
-<ul>
-  <li *ngFor="let item of propertiesListService.getPropertiesModel(); let i = index">
-    {{i}} {{item.key}} {{item.value}}
-  </li>
-</ul>
-
-
-<button (click)="onGetProperties()">HERE</button>

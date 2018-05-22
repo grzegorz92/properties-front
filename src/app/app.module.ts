@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import {ClickOutsideModule} from "ng-click-outside";
 import {RequestService} from "./requests.service";
 import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {HttpModule} from "@angular/http";
     BrowserModule,
     FormsModule,
     ClickOutsideModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]

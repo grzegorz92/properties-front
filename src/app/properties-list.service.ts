@@ -8,7 +8,7 @@ export class PropertiesListService {
 
   }
 
-  private propertiesModel = [{
+  public propertiesModel = [{
     key: "John",
     value: "Smith"
   },
