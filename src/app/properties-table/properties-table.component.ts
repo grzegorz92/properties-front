@@ -31,15 +31,11 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   key: string = "";
   value: string = "";
 
-
   constructor(private propertiesListService: PropertiesListService, private requestService: RequestService) {
-
   }
 
   ngOnInit() {
-
     this.onGetProperties();
-
   }
 
   ngDoCheck(): void {
@@ -52,8 +48,6 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
       this.saveButtonDisabling.push(true);
       this.saveButtonIcon.push("glyphicon glyphicon-floppy-saved");
     }
-
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -69,15 +63,11 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
 
   showHideValue(i) {
 
-    // console.log("SHV bf: " + this.propertiesModelOldValues);
-    // this.propertiesModelOldValues = this.propertiesModel;//copy previous data to different array
-    // console.log("SHV af: " + this.propertiesModelOldValues);
-
-
     this.inputValueVisibility[i] = !this.inputValueVisibility[i];
     this.propertiesValueVisibility[i] = !this.propertiesValueVisibility[i];
     this.saveButtonDisabling[i] = false;
     this.saveButtonIcon[i] = "glyphicon glyphicon-floppy-disk";
+
   }
 
   endEdition(i) {
@@ -106,19 +96,25 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   }
 
 
-  deleteProperty(i) {
-    this.propertiesListService.getPropertiesModel().splice(i, 1);
-    this.endEdition(i);
-  }
-
   onGetProperties() {
 
     this.requestService.getProperties().subscribe(
       (data: any[]) => {
-        this.propertiesModel = data;
 
+        this.propertiesModel = data;
+        //ref issue
+        this.propertiesModelOldValues = []; //new object to clear previous data from array
+        console.log(this.propertiesModelOldValues)
+        for (let prop of data) { this.propertiesModelOldValues.push({key: prop.key, value: prop.value}); }
+        //
+        console.log("Get Properties:");
         console.log(data);
-      }
+      },
+      (error) => {
+      },
+      () => {
+      },
+
     );
   }
 
@@ -133,12 +129,19 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
     }
     else {
 
-      this.requestService.addProperties(this.key, this.value).subscribe(
-        (response) => console.log(response)
-      );
+      this.requestService.addProperties(this.key, this.value)
+        .subscribe(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+          },
+          () => {
+            this.onGetProperties();
+          }
+        );
       this.newPropertyVisibility = !this.newPropertyVisibility;
     }
-    this.onGetProperties();
 
     this.key = "";
     this.value = "";
@@ -147,22 +150,35 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   onEditProperties(i) {
 
     console.log("IN Edition ");
-    //console.log("key: " + this.propertiesModel[i].key + ", oV: " + this.propertiesModelOldValues[i].value + ", nV: " + this.propertiesModel[i].value);
+    console.log("key: " + this.propertiesModel[i].key + ", oV: " + this.propertiesModelOldValues[i].value + ", nV: " + this.propertiesModel[i].value);
 
-    this.requestService.editProperties(this.propertiesModel[i].key, "Ryszard", this.propertiesModel[i].value)
+    this.requestService.editProperties(this.propertiesModel[i].key, this.propertiesModelOldValues[i].value, this.propertiesModel[i].value)
       .subscribe(
-        (response) => console.log(response)
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+        },
+        () => {
+          this.onGetProperties();
+        }
       );
-    this.onGetProperties();
     this.endEdition(i);
+
   }
 
   onDeleteProperties(i) {
 
     this.requestService.deleteProperties(this.propertiesModel[i].key, this.propertiesModel[i].value)
       .subscribe(
-        (response) => console.log(response)
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+        },
+        () => {
+          this.onGetProperties();
+        }
       );
-    this.onGetProperties();
   }
 }

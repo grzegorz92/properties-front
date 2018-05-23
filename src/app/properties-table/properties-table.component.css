@@ -6,3 +6,11 @@
   display: none;
 }
 
+.table-hidden{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-hidden, th, td {
+  border: 1px solid white;
+}

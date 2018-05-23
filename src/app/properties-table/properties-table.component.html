@@ -1,7 +1,7 @@
 <div style="margin-left: 15%; margin-right: 15%; margin-top: 20% ">
+
+
   <table class="table table-bordered">
-
-
     <tr class="bg-primary">
       <th style="width: 40%">Key</th>
       <th style="width: 40%">Value</th>
@@ -26,17 +26,24 @@
         <button class="btn btn-danger" (click)="onDeleteProperties(i)" title="Delete property">&#10006;</button>
       </td>
     </tr>
+
+    <!-- Add new property section -->
+
     <tr [hidden]="newPropertyVisibility">
-      <td><input type="text" placeholder="New key..." [hidden]="newPropertyVisibility" [(ngModel)]="key" ></td>
+      <td><input type="text" placeholder="New key..." [hidden]="newPropertyVisibility" [(ngModel)]="key"></td>
       <td><input type="text" placeholder="New value..." [hidden]="newPropertyVisibility" [(ngModel)]="value"></td>
       <td style="text-align: center">
         <button class="btn btn-default" title="Save new property" (click)="onAddProperties()"
                 [hidden]="newPropertyVisibility">
           <span class="glyphicon glyphicon-floppy-disk"></span>
         </button>
+        <button class="btn btn-danger" (click)="showHideAddNew()" title="Cancel">&#10006;</button>
       </td>
     </tr>
   </table>
+
+  <!-- Add new button -->
+
   <table>
     <tr>
       <td></td>
@@ -49,7 +56,4 @@
       </td>
     </tr>
   </table>
-
-
 </div>
-
