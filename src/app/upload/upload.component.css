@@ -1,0 +1,15 @@
+.centered{
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%
+}
+
+.bgrnd_window{
+  background-color: #ddd;
+  border-radius: 5px;
+
+}
+
+.txt_window{
+
+}

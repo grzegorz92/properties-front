@@ -42,13 +42,7 @@ export class RequestService {
     });
   }
 
-  saveAsProperties(){}
 
-  saveAsYaml(){}
-
-  saveAsJson(){}
-
-  downloadLog(){}
 
   uploadFile(){
 

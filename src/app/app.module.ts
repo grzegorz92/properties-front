@@ -13,6 +13,12 @@ import {RequestService} from "./requests.service";
 import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
 import { UploadComponent } from './upload/upload.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {path:'', component: PropertiesTableComponent},
+  {path: 'upload', component: UploadComponent}
+  ];
 
 
 @NgModule({
@@ -30,7 +36,8 @@ import { UploadComponent } from './upload/upload.component';
     FormsModule,
     ClickOutsideModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]

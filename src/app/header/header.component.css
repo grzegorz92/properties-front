@@ -1,3 +1,11 @@
+.navbar{
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 0px;
+  position:fixed;
+  top:0px;
+  width: 100%;
+}
+
 h3{
   color: snow;
   /*float: left;*/
@@ -59,7 +67,7 @@ li .links:hover {
   display: block;
 }
 
-.dropdown-content .links:hover {background-color: #ddd}
+.dropdown-content .links:hover {background-color:  #0197A6} /*#4ab2c2*/
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -80,10 +88,9 @@ li .links:hover {
   }
 
 .invisbl-btn:hover{
-  background-color: #bdbdbd;
+  background-color: #f1f1f1;
   color: #222;
 }
-
 
 
 .link_btn{
@@ -92,7 +99,11 @@ li .links:hover {
   display: block;
 }
 
-.right-arrow {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
+
+.fa-1x {
+  font-size: 1.5rem;
 }
+.navbar-toggler.tglr {
+  cursor: pointer;
+}
+
