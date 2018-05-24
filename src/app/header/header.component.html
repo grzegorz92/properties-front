@@ -2,22 +2,34 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <h3>Properties Editor</h3>
-      </div>
-      <ul>
-        <li><a href="#">Upload</a> </li>
-        <li>
-           <span class="dropdown"> <a href="#">Save as...</a>
+    </div>
+
+
+    <ul>
+      <li>
+        <button class="invisbl-btn">Upload</button>
+      </li>
+      <li>
+           <span class="dropdown">
+             <button class="invisbl-btn">Save as
+               <span style="font-size: 11px" class="glyphicon glyphicon-triangle-bottom"></span>
+             </button>
              <span class="dropdown-content">
-               <a href="#">.properties</a>
-               <a href="#">.JSON</a>
-               <a href="#">.YAML</a>
+               <a class="links" href="{{baseUrl}}{{savePropertiesUrl}}">.properties</a>
+               <a class="links" href="{{baseUrl}}{{saveJsonUrl}}">.JSON</a>
+               <a class="links" href="{{baseUrl}}{{saveYamlUrl}}">.YAML</a>
              </span>
            </span>
-        </li>
-        <li><a href="#">Log</a> </li>
-      </ul>
+      </li>
+      <li>
+
+        <a class="invisbl-btn link_btn" href="{{baseUrl}}{{downloadLogUlr}}">Download Log</a>
+
+      </li>
+    </ul>
 
   </div>
+
 </nav>
 
 

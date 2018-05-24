@@ -12,6 +12,7 @@ import {ClickOutsideModule} from "ng-click-outside";
 import {RequestService} from "./requests.service";
 import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
+import { UploadComponent } from './upload/upload.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {HttpClientModule} from "@angular/common/http";
     WarningMessageComponent,
     PropertiesTableComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

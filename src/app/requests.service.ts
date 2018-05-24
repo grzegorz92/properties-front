@@ -50,5 +50,12 @@ export class RequestService {
 
   downloadLog(){}
 
+  uploadFile(){
+
+    return this.httpClient.post('http://localhost:8080/rest/properties/upload',null,{
+     // params: new HttpParams().set("key",1).set("value",value)
+    });
+  }
+
 
 }
