@@ -8,10 +8,28 @@
       <li>
         <a routerLink="/upload" class="invisbl-btn link_btn">Upload</a>
       </li>
-      <li>
+      <li  dropdown class="btn-group">
+
+
+             <button dropdownToggle type="button" class="invisbl-btn dropdown-toggle">Save as
+               <span class="caret"></span>
+             </button>
+
+             <ul *dropdownMenu class="dropdown-menu" role="menu">
+               <li role="menuitem"><a class="dropdown-item" href="{{baseUrl}}{{savePropertiesUrl}}">.properties</a></li>
+               <li role="menuitem"><a class="dropdown-item" href="{{baseUrl}}{{saveJsonUrl}}">.JSON</a></li>
+
+               <li role="menuitem"><a class="dropdown-item" href="{{baseUrl}}{{saveYamlUrl}}">.YAML</a></li>
+
+             </ul>
+
+
+
+
            <span class="dropdown">
              <button class="invisbl-btn">Save as
-               <span style="font-size: 11px" class="glyphicon glyphicon-triangle-bottom"></span>
+              <span class="caret"></span>
+
              </button>
              <span class="dropdown-content">
                <a class="links" href="{{baseUrl}}{{savePropertiesUrl}}">.properties</a>
@@ -25,11 +43,20 @@
         <a class="invisbl-btn link_btn" href="{{baseUrl}}{{downloadLogUlr}}">Download Log</a>
 
       </li>
-    </ul>
 
+
+
+    </ul>
   </div>
 
 </nav>
+
+
+
+
+
+
+
 
 
 

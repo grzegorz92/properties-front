@@ -14,6 +14,7 @@ import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
 import { UploadComponent } from './upload/upload.component';
 import {RouterModule, Routes} from "@angular/router";
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 
 const appRoutes: Routes = [
   {path:'', component: PropertiesTableComponent},
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     PropertiesTableComponent,
     HeaderComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     ClickOutsideModule,
     HttpModule,
     HttpClientModule,
+    BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RequestService],

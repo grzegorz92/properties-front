@@ -1,6 +1,15 @@
-<div class="centered bgrnd_window">
-  <div class="txt_window"> Uploading </div>
+<div class="center-screen">
+
+
+  <label style="background-color: white">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles" [hidden]="!hiddenButton"
+          (click)="upload()">Upload</button>
+  <a href="" class="btn btn-primary" [hidden]="hiddenButton">Finish</a>
+
 
 </div>
-
 

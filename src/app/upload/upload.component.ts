@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestService} from "../requests.service";
+import {Observable} from "rxjs/Observable";
+import {HttpClient, HttpEventType, HttpResponse} from "@angular/common/http";
+import { Router } from '@angular/router';
+import {PropertiesTableComponent} from "../properties-table/properties-table.component";
 
 @Component({
   selector: 'app-upload',
@@ -7,9 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  router: Router;
+  hiddenButton = true;
+
+
+  constructor(private requestService: RequestService) { }
 
   ngOnInit() {
   }
+
+  selectFile(event){
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(){
+
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.requestService.uploadFile(this.currentFileUpload).subscribe();
+    this.hiddenButton = !this.hiddenButton;
+
+  }
+
+
+
 
 }

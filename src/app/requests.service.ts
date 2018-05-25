@@ -44,10 +44,15 @@ export class RequestService {
 
 
 
-  uploadFile(){
+  uploadFile(file: File){
 
-    return this.httpClient.post('http://localhost:8080/rest/properties/upload',null,{
-     // params: new HttpParams().set("key",1).set("value",value)
+    let formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+
+    return this.httpClient.post('http://localhost:8080/rest/properties/upload',formData,{
+      responseType: 'json'
     });
   }
 

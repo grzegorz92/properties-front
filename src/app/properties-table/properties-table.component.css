@@ -48,11 +48,21 @@
   border-color: #0197A6;
 }
 
+.btn-primary:disabled,
+.btn-primary[disabled]{
+  background-color: #4ab2c2;
+  border-color: #4DC7D7;
+  opacity: 0.5;
+}
+
 
 /*Table header color*/
 .bg-primary{
   background-color: #0197A6;
 }
+
+
+
 
 
 
