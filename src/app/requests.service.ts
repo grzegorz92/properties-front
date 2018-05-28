@@ -24,7 +24,7 @@ export class RequestService {
 
     return this.httpClient.post('http://localhost:8080/rest/properties',null,{
       params: new HttpParams().set("key",key).set("value",value)
-      });
+    });
 
   }
 

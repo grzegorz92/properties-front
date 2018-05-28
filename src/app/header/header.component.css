@@ -8,131 +8,70 @@
 
 h3 {
   color: snow;
-  /*float: left;*/
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 ul {
-  list-style-type: none;
-
   margin: auto;
-  background-color: #222;
   float: right;
-
 }
 
 li {
   float: left;
 }
 
-li .links {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/*.active {*/
-/*background-color: #333;*/
-/*color: white;*/
-/*}*/
-
-li .links:hover {
-  background-color: #333;
-  color: white;
-}
-
-dropdown-item:hover{
-  background-color: #333;
-
-}
-
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-display: none;
-position: absolute;
-background-color: #f1f1f1;
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
-margin-right: 50%;
-}
-
-.dropdown-content .links {
-color: black;
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-}
-
-.dropdown-content .links:hover {background-color:  #0197A6} /*#4ab2c2*/
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /*Overrode NGX-Bootstrap classes*/
 .dropdown-menu {
   background-color: #f1f1f1;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  margin-right: 50%;
-
+  padding: 0;
+  max-width: 160px;
+  border: none;
 }
 
-.dropdown-menu .links {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.dropdown-menu .dropdown-item{
+  color: #222;
+  min-width: 160px;
 }
 
-.dropdown-menu .links:hover {
-  background-color: #0197A6
-
+.dropdown-menu .dropdown-item:hover {
+  background-color: #0197A6;
+  color: snow;
 }
+
+.dropdown-item{
+  color: #222;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 
 /**/
-
-.invisbl-btn {
+.black-btn {
   background-color: #222;
-  border: none !important;
+  border: none;
   color: snow;
 
-  outline: none;
   padding: 15px 15px;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
-
 }
 
-.invisbl-btn:active {
-  background-color: #f1f1f1;
-  border: none !important;
-  color: snow;
-
-  outline: none;
-  padding: 15px 15px;
-
-}
-
-.invisbl-btn:hover {
+.black-btn:hover {
   background-color: #f1f1f1;
   color: #222;
 }
 
-.link_btn {
+.link-btn {
   color: snow;
   text-decoration: none;
   display: block;
+}
+
+.dropdown-btn:focus{
+  background-color: #f1f1f1;
+  color: #222;
 }
 
 .fa-1x {

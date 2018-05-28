@@ -19,7 +19,7 @@ import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 const appRoutes: Routes = [
   {path:'', component: PropertiesTableComponent},
   {path: 'upload', component: UploadComponent}
-  ];
+];
 
 
 @NgModule({

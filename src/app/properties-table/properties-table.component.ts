@@ -35,6 +35,7 @@ export class PropertiesTableComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnInit() {
+
     this.onGetProperties();
   }
 
