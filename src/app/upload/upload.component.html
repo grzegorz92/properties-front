@@ -5,11 +5,11 @@
     <input type="file" (change)="selectFile($event)">
   </label>
 
-
-  <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles" [hidden]="!hiddenButton"
+<span>
+  <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles"
           (click)="upload()">Upload</button>
   <a href="" class="btn btn-primary" [hidden]="hiddenButton">Finish</a>
-
+</span>
 
 </div>
 
