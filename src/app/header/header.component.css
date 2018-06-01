@@ -46,25 +46,21 @@ li {
   padding-bottom: 8px;
 }
 
-
-/**/
-.black-btn {
+.navbar-button{
   background-color: #222;
   border: none;
   color: snow;
-
   padding: 15px 15px;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
-.black-btn:hover {
+.navbar-button:hover {
   background-color: #f1f1f1;
   color: #222;
 }
 
-.link-btn {
-  color: snow;
+.navbar-button.link{
   text-decoration: none;
   display: block;
 }
@@ -81,4 +77,3 @@ li {
 .navbar-toggler.tglr {
   cursor: pointer;
 }
-
