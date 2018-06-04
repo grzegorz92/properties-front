@@ -1,16 +1,12 @@
 <div class="center-screen">
-
-
   <label style="background-color: white">
     <input type="file" (change)="selectFile($event)">
   </label>
 
-<span>
-  <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles"
+  <span>
+    <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles"
           (click)="upload()">Upload</button>
-  <a href="" class="btn btn-primary" [hidden]="hiddenButton">Finish</a>
-</span>
-
-
+    <a href="" class="btn btn-primary" [hidden]="hiddenButton">Finish</a>
+  </span>
 </div>
 

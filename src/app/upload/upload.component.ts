@@ -29,11 +29,10 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
-
     this.currentFileUpload = this.selectedFiles.item(0);
     this.requestService.uploadFile(this.currentFileUpload).subscribe();
     this.hiddenButton = false;
-    this.selectedFiles= null;
+    this.selectedFiles = null;
   }
 
 
