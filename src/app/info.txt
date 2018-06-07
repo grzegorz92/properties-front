@@ -1,1 +1,1 @@
-server and warning_message used for tutorial purpose
+server and warning_message components used for tutorial purpose
